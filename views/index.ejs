@@ -163,6 +163,8 @@
     </div>
 
     <script>
+      const purl = "<%= purl %>";
+
       function resetDefault() {
         document.getElementById("urlv").value = "";
         document.getElementById("shorturl").innerHTML = "";
@@ -181,7 +183,7 @@
           })
           .then((data) => {
             document.getElementById("shorturl").innerText =
-              `${purl}/shortUrl/${data.data.url.shortId}`;
+              `${window.location.origin}/shortUrl/${data.data.url.shortId}`;
             console.log(data);
           })
           .catch((err) => {
