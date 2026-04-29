@@ -1,0 +1,207 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Home page</h1>
+    <label>Enter the url you want to shorten:</label>
+    <input type="text" id="urlv" />
+    <button id="genbtn">Generate</button>
+    <h3>short Url:</h3>
+    <span id="shorturl"></span>
+    <script>
+      const purl = "<%= purl %>";
+      function resetDefault() {
+        document.getElementById("urlv").value = "";
+        document.getElementById("shorturl").innerHTML = "";
+      }
+      async function urlFetch(url) {
+        fetch(`${purl}/shortUrl`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ url: url }),
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            document.getElementById("shorturl").innerText =
+              `${purl}/shortUrl/${data.data.url.shortId}`;
+            console.log(data);
+          })
+          .catch((err) => {
+            resetDefault();
+            alert("failed to generate shorten url try again");
+            console.log(err);
+          });
+      }
+      document.getElementById("genbtn").addEventListener("click", () => {
+        const url = document.getElementById("urlv").value;
+        if (!url) {
+          resetDefault();
+          return alert("url input cannot be empty");
+        }
+        urlFetch(url);
+      });
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #555;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+      }
+
+      button {
+        margin-top: 15px;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #667eea;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #5a67d8;
+      }
+
+      .result {
+        margin-top: 20px;
+        padding: 10px;
+        background: #f3f4f6;
+        border-radius: 8px;
+        word-break: break-all;
+      }
+
+      .result span {
+        color: #333;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🔗 URL Shortener</h1>
+
+      <label>Enter the URL you want to shorten</label>
+      <input type="text" id="urlv" placeholder="https://example.com" />
+
+      <button id="genbtn">Generate</button>
+
+      <div class="result">
+        <h3>Short URL:</h3>
+        <span id="shorturl"></span>
+      </div>
+    </div>
+
+    <script>
+      const purl = "<%= purl %>";
+
+      function resetDefault() {
+        document.getElementById("urlv").value = "";
+        document.getElementById("shorturl").innerHTML = "";
+      }
+
+      async function urlFetch(url) {
+        fetch(`${purl}/shortUrl`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ url: url }),
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            document.getElementById("shorturl").innerText =
+              `${purl}/shortUrl/${data.data.url.shortId}`;
+            console.log(data);
+          })
+          .catch((err) => {
+            resetDefault();
+            alert("failed to generate shorten url try again");
+            console.log(err);
+          });
+      }
+
+      document.getElementById("genbtn").addEventListener("click", () => {
+        const url = document.getElementById("urlv").value;
+        if (!url) {
+          resetDefault();
+          return alert("url input cannot be empty");
+        }
+        urlFetch(url);
+      });
+    </script>
+  </body>
+</html>
