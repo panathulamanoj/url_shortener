@@ -13,13 +13,12 @@
     <h3>short Url:</h3>
     <span id="shorturl"></span>
     <script>
-      const purl = "<%= purl %>";
       function resetDefault() {
         document.getElementById("urlv").value = "";
         document.getElementById("shorturl").innerHTML = "";
       }
       async function urlFetch(url) {
-        fetch(`${purl}/shortUrl`, {
+        fetch(`/shortUrl`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -164,15 +163,13 @@
     </div>
 
     <script>
-      const purl = "<%= purl %>";
-
       function resetDefault() {
         document.getElementById("urlv").value = "";
         document.getElementById("shorturl").innerHTML = "";
       }
 
       async function urlFetch(url) {
-        fetch(`${purl}/shortUrl`, {
+        fetch(`/shortUrl`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -19,9 +19,7 @@ mongoose
     console.log(err.message);
   });
 app.get("/", (req, res) => {
-  res
-    .status(200)
-    .render("index", { purl: `${req.protocol}://${req.get("host")}` });
+  res.status(200).render("index");
 });
 app.post("/shortUrl", async (req, res) => {
   const url = req.body.url;
