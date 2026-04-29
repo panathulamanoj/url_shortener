@@ -51,6 +51,6 @@ app.get("/allurls", async (req, res) => {
     },
   });
 });
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("listenning  on port 3000");
 });
